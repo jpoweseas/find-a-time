@@ -1,0 +1,21 @@
+<h3>Event: "<%= event.name %>"</h3>
+<form action = <%= "/event/" + event.name %> method = "post">
+<h5>Times</h5>
+<input type = "text" name = "username"></p>
+<% for(var i = 0; i < event.times.length; i++) { %>
+    <p>
+    	<%=event.times[i]%> <input type = "checkbox" name = <%= event.times[i] %>></p>
+    	<br>Current users:
+    	<ul>
+    		<% for(var j = 0; j < Object.keys(event.users).length; j++) { %>
+	    		<% if (event.users[Object.keys(event.users)[j]][i]) { %>
+	    			<li><%= Object.keys(event.users)[j]%></li>
+	    		<% } %>
+	    	<% } %>
+		</ul>
+    </p>
+<% } %>
+<p><input type="submit"></p>
+</form>
+<a href = "/">Back To Main</a>
+<script type="text/javascript" src="ejs_production.js"></script>

@@ -1,0 +1,17 @@
+{
+  "name": "find-a-time",
+  "version": "1.0.0",
+  "description": "Simple web application to help people agree on meeting times",
+  "main": "app.js",
+  "scripts": {},
+  "author": "jpowe",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-session": "^2.0.0-beta.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
+    "mongoose":  "4.5.0"
+  }
+}
