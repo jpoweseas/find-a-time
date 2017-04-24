@@ -1,4 +1,15 @@
 <h1>Create New Event</h1>
+<h3>Times</h3>
+<ul>
+<% for(var i = 0; i < times.length; i++) { %>
+	<li><%= times[i] %></li>
+<% } %>
+</ul>
+<form method = "post">
+	<p>Add Time<br>
+	<input type = "text" name = "time"></p>
+	<p><input type="submit"></p>
+</form>
 <form method = "post">
 	<p>Event Name<br>
 	<input type = "text" name = "eventname"></p>

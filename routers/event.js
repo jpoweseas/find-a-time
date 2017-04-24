@@ -27,9 +27,7 @@ router.post('/:name', function(req, res, next) {
 		} else {
 			var times = [];
 			for (var i = 0; i < event.times.length; i++) {
-				if (req.body[event.times[i]] === 'on') {
-					times.push(event.times[i]);
-				}
+				times[i] = (req.body[event.times[i]] === 'on');
 			}
 			Event.addUser(req.params.name, req.body.username, times, function(err) {
 				if (err) {

@@ -7,12 +7,17 @@
     	<%=event.times[i]%> <input type = "checkbox" name = <%= event.times[i] %>></p>
     	<br>Current users:
     	<ul>
-    		<% for(var j = 0; j < Object.keys(event.users).length; j++) { %>
+    		<% var hasUser = false %>
+    		<% for(var j = 0; event.users && j < Object.keys(event.users).length; j++) { %>
 	    		<% if (event.users[Object.keys(event.users)[j]][i]) { %>
 	    			<li><%= Object.keys(event.users)[j]%></li>
+	    			<% hasUser = true; %>
 	    		<% } %>
 	    	<% } %>
 		</ul>
+		<% if (!hasUser) { %>
+	   			<p>None</p>
+	   	<% } %>
     </p>
 <% } %>
 <p><input type="submit"></p>

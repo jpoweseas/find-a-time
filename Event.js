@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/find-a-time');
 var Schema = mongoose.Schema;
 
+//mongo find-a-time --eval "db.dropDatabase()"
+
 var eventSchema = new Schema({
   name: { type: String, required: true, unique: true },
   times: { type: Array, required: true },
@@ -10,7 +12,7 @@ var eventSchema = new Schema({
 
 
 eventSchema.statics.addEvent = function(name, times, cb) {
-  var newEvent = new this({ name: name, times: times, users: {me: [true, true], you: [false, true]}});
+  var newEvent = new this({ name: name, times: times, users: {}});
   newEvent.save(cb);
 }
 
@@ -33,7 +35,7 @@ eventSchema.statics.getEvent = function(name, cb) {
 eventSchema.statics.addUser = function(eventname, username, times, cb) {
 	var that = this;
 	that.findOne({name: eventname}, function (err, event) {
-		var temp = event.users;
+		var temp = event.users ? event.users : {};
 		temp[username] = times;
 		that.findOneAndUpdate({name: eventname}, {users: temp}, {upsert: true}, function(err) {
 			if (err) {

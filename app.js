@@ -16,14 +16,10 @@ var MONGO_URI = 'mongodb://localhost:27017/find-a-time';
 
 var Event = require('./Event');
 
-//Internal state
-
-var events = [];
-
 //Requests
 
 app.get('/', function (req, res) {
-	res.render('index.html', {events: events});
+	res.render('index.html');
 });
 
 app.post('/', function (req, res, next) {
@@ -35,6 +31,7 @@ app.post('/', function (req, res, next) {
 			if (bool) {
 				res.redirect('event/' + req.body.eventname);
 			} else {
+				console.log('could not find event ' + req.body.eventname);
 				res.redirect('/');
 			}
 		});
