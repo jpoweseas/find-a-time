@@ -1,26 +1,32 @@
-<h3>Event: "<%= event.name %>"</h3>
-<form action = <%= "/event/" + event.name %> method = "post">
-<h5>Times</h5>
-<input type = "text" name = "username"></p>
-<% for(var i = 0; i < event.times.length; i++) { %>
-    <p>
-    	<%=event.times[i]%> <input type = "checkbox" name = <%= event.times[i] %>></p>
-    	<br>Current users:
-    	<ul>
-    		<% var hasUser = false %>
-    		<% for(var j = 0; event.users && j < Object.keys(event.users).length; j++) { %>
-	    		<% if (event.users[Object.keys(event.users)[j]][i]) { %>
-	    			<li><%= Object.keys(event.users)[j]%></li>
-	    			<% hasUser = true; %>
-	    		<% } %>
-	    	<% } %>
-		</ul>
-		<% if (!hasUser) { %>
-	   			<p>None</p>
-	   	<% } %>
-    </p>
-<% } %>
-<p><input type="submit"></p>
-</form>
-<a href = "/">Back To Main</a>
-<script type="text/javascript" src="ejs_production.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="../styles/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Find a Time: <%= name %></title>
+</head>
+<body>
+	<h1>Event: <%= name %></h1>
+	<div class = "top">
+		<button type="button" id = "viewall-button">View All Users</button>
+		<input type = "text" id = "user">
+		<button type="button" id = "edituser-button">Edit User</button>
+		<br>
+		Currently <span id = "top-text">viewing all users.</span>
+		<br>
+		<span id = "top-available"><br></span>
+	</div>
+	<div id = "dates">
+		<% for (var j = 0; j < dates.length; j++) { %>
+			<div class = "date-section">
+				<h3 class = "date-title"><%= dates[j] %></h3>
+				<ul class = "user-time-boxes">
+				<% for(var i = 0; i < times.length; i++) { %>
+					<li id = <%= dates[j].replace(' ', '-') + '-' + times[i].replace(' ', '-') %> class = 'time-box'><%= times[i].replace('-', ' ') %></li>
+				<% } %>
+				</ul>
+			</div>
+		<% } %>
+	</div>
+	<script type="text/javascript" src="../scripts/event-script.js"></script>
+</body>
