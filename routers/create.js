@@ -3,30 +3,24 @@ var router = express.Router();
 
 var Event = require('../Event');
 
-var times = [];
+var times = require('../times.js');
 
 router.get('/', function (req, res) {
-	times = [];
-	res.render('create.html', {times: []});
+	res.render('create.html', {times: times});
 });
 
 router.post('/', function (req, res, next) {
-	if (req.body.time) {
-		times.push(req.body.time);
-		res.render('create.html', {times: times});
-	} else {
-		next();
-	}
-}.bind(this))
-
-router.post('/', function (req, res) {
 	if (req.body.eventname) {
 		var eventname = req.body.eventname;
-		Event.addEvent(eventname, times, function(err) {
+		var dates = req.body.dates.split(';');
+		var startTime = times.indexOf(req.body.start);
+		var endTime = times.indexOf(req.body.end);
+		Event.addEvent(eventname, dates, startTime, endTime, function(err, id) {
 			if (err !== null) { 
 				console.log('create.js: Could not add event'); 
 			} else {
-				res.render('confirm.html', {name: eventname}); 
+				console.log('create.js: Created event with id:');
+				res.send({id: id});
 			}
 		});
 	} else {

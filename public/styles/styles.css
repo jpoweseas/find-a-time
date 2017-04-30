@@ -1,0 +1,89 @@
+h1 {
+	text-align: center;
+}
+
+* {
+    font-family: arial, sans-serif;
+}
+
+/*create-scripts stuff*/
+
+#add-dates {
+	width: 250px;
+	margin: auto;
+	text-align: left;
+}
+
+/*event-scripts stuff*/
+
+.whocares {
+	width: 50%;
+	text-align: center;
+	float: left;
+}
+
+.date-title {
+	text-align: center;
+}
+
+.top {
+	text-align: center;
+}
+
+.time-box {
+	padding: 1px;
+	border: 1px solid black;
+	margin: 0;
+	width: 80px;
+	text-align: center;
+}
+
+.selected {
+	background-color: green;
+}
+
+.user-time-boxes {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+  cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.date-section {
+	width: 120px;
+	margin: auto;
+	text-align: center;
+	float: left;
+}
+
+#dates {
+	overflow: hidden;
+	margin-left: auto ;
+	margin-right: auto ;
+}
+
+.green0 {
+	background-color: #ffffff;
+}
+
+.green1 {
+	background-color: #cce5cc;
+}
+
+.green2 {
+	background-color: #7fbf7f;
+}
+
+.green3 {
+	background-color: #329932;
+}
+
+.green4 {
+	background-color: #008000;
+}

@@ -1,18 +1,40 @@
-<h1>Create New Event</h1>
-<h3>Times</h3>
-<ul>
-<% for(var i = 0; i < times.length; i++) { %>
-	<li><%= times[i] %></li>
-<% } %>
-</ul>
-<form method = "post">
-	<p>Add Time<br>
-	<input type = "text" name = "time"></p>
-	<p><input type="submit"></p>
-</form>
-<form method = "post">
-	<p>Event Name<br>
-	<input type = "text" name = "eventname"></p>
-	<p><input type="submit"></p>
-</form>
-<a href = "/">Back To Main</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="../styles/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Create New Event</title>
+</head>
+<body>
+	<h1>Create New Event</h1>
+	<div id = "everything">
+		<br>
+		<p class = "top">Event Name: <input type = "text" id = "eventname"></p>
+		<p class = "top">
+			Start Time:
+			<select id = "start">
+			  <% for(var i = 0; i < times.length; i++) { %>
+			    <option><%= times[i]%></option>
+		      <% } %>
+			</select>
+		</p>
+		<p class = "top">
+			End Time:
+			<select id = "end">
+			  <% for(var i = 0; i < times.length; i++) { %>
+			    <option><%= times[i]%></option>
+		      <% } %>
+			</select>
+		</p>
+		<div id = "add-dates">
+			<p>Dates:</p>
+			<ul id = "dates-list"></ul>
+			<p>
+				<input type = "text" id = "date-input">
+				<button type="button" id = "adddate-button">Add Date</button>
+			</p>
+		</div>
+		<p class = "top">Create Event: <button id = "create-button">Submit!</button></p>
+	</div>
+	<script type="text/javascript" src="../scripts/create-script.js"></script>
+</body>

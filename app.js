@@ -10,6 +10,9 @@ app.use(cookieSession({
   secret: 'supersecret'
 }));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static('public'));
+
+//Mongo stuff
 
 var MongoClient = require('mongodb').MongoClient;
 var MONGO_URI = 'mongodb://localhost:27017/find-a-time';
@@ -17,6 +20,16 @@ var MONGO_URI = 'mongodb://localhost:27017/find-a-time';
 var Event = require('./Event');
 
 //Requests
+
+app.get('/info/:id', function (req, res) {
+	Event.getEvent(req.params.id, function(err, event) {
+		if (!err) {
+			res.send(event);
+		} else {
+			console.log('app.js: something is wrong');
+		}
+	})
+});
 
 app.get('/', function (req, res) {
 	res.render('index.html');
@@ -55,10 +68,11 @@ var sendErrorMsg = function (err, req, res, next) {
 
 app.use(logError, sendErrorMsg);
 
+
 MongoClient.connect(MONGO_URI, function(err, db) {
   if (err) return console.log(err)
 
   app.listen(3000, function() {
     console.log('listening on 3000')
   });
-})
+});
